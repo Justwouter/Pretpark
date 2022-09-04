@@ -61,7 +61,7 @@ class Kaart{
 
 
 class KaartItem : Tekenbaar{
-    private  Coordinaat _locatie {get { return _locatie;} set {if(value.x)}}
+    private  Coordinaat _locatie {get { return _locatie;} set {if(value.x){}}}
 
     public KaartItem(Kaart kaart, Coordinaat _locatie){
 
@@ -82,8 +82,9 @@ struct Coordinaat{
         return new Coordinaat((c1.x+c2.x), (c1.y+c2.y));
     }
 
+    //NIUML
     public static bool isInCords(Coordinaat c1, Coordinaat c2){
-        if(c2.x < c1.x)
+        if(c2.x < c1.x){}
     }
 }
 
