@@ -1,8 +1,6 @@
 namespace Pretpark;
 public interface Tekenbaar{
-    public void TekenConsole(ConsoleTekener t){
-
-    }
+    public void TekenConsole(ConsoleTekener t){}
 }
 
 public interface Tekener{
@@ -10,7 +8,9 @@ public interface Tekener{
 }
 
 public class ConsoleTekener : Tekener{
-    public void Teken(Tekenbaar t){}
+    public void Teken(Tekenbaar t){
+        t.TekenConsole(this);
+    }
     
     public void SchrijfOp(Coordinaat Positie, string Text) {
         if (Positie.X < 0 || Positie.Y < 0){
