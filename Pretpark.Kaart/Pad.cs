@@ -24,7 +24,13 @@ public class Pad : Tekenbaar{
         for (int i = 0; i < 100; i++){
             t.SchrijfOp(van + new Coordinaat((int)(verschil.X * ((float)i / 100)), (int)(verschil.Y * ((float)i / 100))), "#");
         }
-        t.SchrijfOp(naar, Lengte().metSuffixen());
+        t.SchrijfOp(FindTheMiddle(), Lengte().metSuffixen());
+    }
+
+    private Coordinaat FindTheMiddle(){
+        int DiffrenceX = Math.Abs(van.X - naar.X); 
+        int DiffrenceY = Math.Abs(van.Y - naar.Y);
+        return new Coordinaat(DiffrenceX/2, DiffrenceY/2);
     }
 
     
@@ -40,13 +46,14 @@ public class Float{
     public string metSuffixen(){
         int count = 0;
         List<String> Symbols = new List<string>{"","K","M","B","T"};
+        //1 -> 999 1k -> 999k 1m -> 999m
         int i = 1;
         while (true){
-            if(this.DigitNum < i){
-                
-                String Numbers = (((float)DigitNum)/i).ToString();
+            if(this.DigitNum <= i*999){
+                String Numbers = (((float)DigitNum)/i*10).ToString("n1");
                 return Numbers+Symbols[count];
             }
+            
             i *=1000;
             count++;
         }
