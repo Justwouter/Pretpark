@@ -28,9 +28,10 @@ interface Tekenbaar{
 interface Tekener{
     public void Teken(Tekenbaar t){}
 }
+
 class ConsoleTekener : Tekener{
     public void Teken(Tekenbaar t){}
-    
+
     public void SchrijfOp(Coordinaat Positie, string Text) {
         if (Positie.X < 0 || Positie.Y < 0){
             throw new Exception("Kan niet tekenen in het negatieve!");
@@ -41,8 +42,8 @@ class ConsoleTekener : Tekener{
 }
 
 class Kaart{
-    public int Breedte;
-    public int Hoogte = 10;
+    public readonly int Breedte;
+    public readonly int Hoogte = 10;
 
     public Kaart(int Hoogte, int Breedte){
         this.Hoogte = Hoogte;
@@ -66,7 +67,7 @@ class Kaart{
 
 
 
-class KaartItem : Tekenbaar{
+abstract class KaartItem : Tekenbaar{
     private  Coordinaat _locatie {get { return _locatie;} set {
         if(value.X >= kaart.Breedte && value.Y >= kaart.Hoogte){
             this._locatie = _locatie;
@@ -106,6 +107,14 @@ class Pad : Tekenbaar{
     private float? lengteBerekend;
 
     public float Lengte(){
+        if(lengteBerekend == 0 | lengteBerekend == null){
+            int DiffrenceX = Math.Abs(van.X - naar.X); //Side A
+            int DiffrenceY = Math.Abs(van.Y - naar.Y); //Side B
+            float DiffrenceTotal = (float) Math.Sqrt(DiffrenceX^2 * DiffrenceY^2); //A^2 * B^2 = C^2
+            lengteBerekend = DiffrenceTotal;
+            return DiffrenceTotal;
+        }
+        return (float)lengteBerekend;
 
     }
 
