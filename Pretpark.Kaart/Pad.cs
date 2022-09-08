@@ -8,8 +8,8 @@ public class Pad : Tekenbaar{
 
     public Float Lengte(){
         if(!CachedItems[0].Equals(van) | !CachedItems[1].Equals(naar)){
-            int DiffrenceX = Math.Abs(van.X - naar.X); //Side A
-            int DiffrenceY = Math.Abs(van.Y - naar.Y); //Side B
+            var DiffrenceX = Math.Abs(van.X - naar.X); //Side A
+            var DiffrenceY = Math.Abs(van.Y - naar.Y); //Side B
             float DiffrenceTotal = (float) Math.Sqrt(DiffrenceX^2 * DiffrenceY^2); //A^2 * B^2 = C^2
             lengteBerekend = DiffrenceTotal;
             CachedItems[0] = this.van;
@@ -28,8 +28,8 @@ public class Pad : Tekenbaar{
     }
 
     private Coordinaat FindTheMiddle(){
-        int DiffrenceX = Math.Abs(van.X - naar.X); 
-        int DiffrenceY = Math.Abs(van.Y - naar.Y);
+        var DiffrenceX = Math.Abs(van.X - naar.X); 
+        var DiffrenceY = Math.Abs(van.Y - naar.Y);
         return new Coordinaat(DiffrenceX/2, DiffrenceY/2);
     }
 
