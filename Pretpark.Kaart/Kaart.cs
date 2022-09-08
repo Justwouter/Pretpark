@@ -1,4 +1,4 @@
-﻿namespace Pretpark;
+﻿namespace Pretpark.Kaart;
 
 public class Kaart{
     public readonly int Breedte;

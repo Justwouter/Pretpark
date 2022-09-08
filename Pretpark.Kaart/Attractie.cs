@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 
 public class Attractie : KaartItem{
     private int? _minimaleLengte;

@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 
 public abstract class KaartItem : Tekenbaar{
     private Coordinaat _locatie;

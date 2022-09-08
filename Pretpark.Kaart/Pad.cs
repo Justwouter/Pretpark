@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 public class Pad : Tekenbaar{
     public Coordinaat van;
     public Coordinaat naar;

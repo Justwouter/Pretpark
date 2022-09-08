@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 
 public class Starter{
     public static void Main(String[] args){

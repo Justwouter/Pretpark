@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 
 public struct Coordinaat{
     public readonly int X;

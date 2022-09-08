@@ -1,4 +1,4 @@
-namespace Pretpark;
+namespace Pretpark.Kaart;
 public interface Tekenbaar{
     public void TekenConsole(ConsoleTekener t){}
 }
