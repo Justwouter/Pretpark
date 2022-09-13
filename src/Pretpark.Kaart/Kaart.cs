@@ -2,7 +2,7 @@
 
 public class Kaart{
     public readonly int Breedte;
-    public readonly int Hoogte;
+    public readonly int Hoogte = 10;
 
     public List<KaartItem> _itemsOnChart = new List<KaartItem>();
     public List<Pad> _PathsOnChart = new List<Pad>();

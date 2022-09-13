@@ -3,10 +3,10 @@ public class Pad : Tekenbaar{
     public Coordinaat van;
     public Coordinaat naar;
 
-    private float? lengteBerekend;
+    private float lengteBerekend;
     private List<Coordinaat> CachedItems = new List<Coordinaat>{new Coordinaat(-10,-11),new Coordinaat(-10,-11)};
 
-    public Float Lengte(){
+    public float Lengte(){
         if(!CachedItems[0].Equals(van) | !CachedItems[1].Equals(naar)){
             var DiffrenceX = Math.Abs(van.X - naar.X); //Side A
             var DiffrenceY = Math.Abs(van.Y - naar.Y); //Side B
@@ -14,9 +14,9 @@ public class Pad : Tekenbaar{
             lengteBerekend = DiffrenceTotal;
             CachedItems[0] = this.van;
             CachedItems[1] = this.naar;
-            return new Float(DiffrenceTotal);
+            return (float)(DiffrenceTotal);
         }
-        return new Float(lengteBerekend);
+        return (float)(lengteBerekend);
     }
 
     public void TekenConsole(ConsoleTekener t){
@@ -37,27 +37,43 @@ public class Pad : Tekenbaar{
 
 }
 
-public class Float{
-    private float? DigitNum{get;}
+// public class Float2 {
+//     private float? DigitNum{get;}
 
-    public Float(float? DigitNum){
-        this.DigitNum = DigitNum;
-    }
-    public string metSuffixen(){
-        int count = 0;
-        List<String> Symbols = new List<string>{"","K","M","B","T"};
-        //1 -> 999 1k -> 999k 1m -> 999m
-        int i = 1;
-        while (true){
-            if(this.DigitNum <= i*999){
-                String Numbers = (((float)DigitNum)/i*10).ToString("n1");
-                return Numbers+Symbols[count];
-            }
+//     public Float(float? DigitNum){
+//         this.DigitNum = DigitNum;
+//     }
+//     public string metSuffixen(){
+//         int count = 0;
+//         List<String> Symbols = new List<string>{"","K","M","B","T"};
+//         //1 -> 999 1k -> 999k 1m -> 999m
+//         int i = 1;
+//         while (true){
+//             if(this.DigitNum <= i*999){
+//                 String Numbers = (((float)DigitNum)/i*10).ToString("n1");
+//                 return Numbers+Symbols[count];
+//             }
             
-            i *=1000;
-            count++;
-        }
+//             i *=1000;
+//             count++;
+//         }
         
+
+//     }
+// }
+
+public static class FloatExtention{
+
+    public static string metSuffixen(this float number){
+        if(number >= 1000){
+            float f = number/1000;
+            String s = String.Format("{0:0.0}K",f);
+            return s;
+        }
+        else{
+            String s = String.Format("{0:0.0}K",number);
+            return s;
+        }
 
     }
 }

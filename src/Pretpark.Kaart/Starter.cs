@@ -1,4 +1,5 @@
 namespace Pretpark.Kaart;
+using Pretpark.Base;
 
 public class Starter{
     public static void Main(String[] args){
@@ -11,7 +12,7 @@ public class Starter{
         Pad p2 = new Pad();
         p2.van = new Coordinaat(26, 4);
         p2.naar = new Coordinaat(10, 5);
-        k.VoegPadToe(p2);
+        k.VoegPadToe(p2);   
         k.VoegItemToe(new Attractie(k, new Coordinaat(15, 15)));
         k.VoegItemToe(new Attractie(k, new Coordinaat(20, 15)));
         k.VoegItemToe(new Attractie(k, new Coordinaat(5, 18)));

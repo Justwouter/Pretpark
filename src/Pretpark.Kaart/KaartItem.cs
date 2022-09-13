@@ -3,7 +3,7 @@ namespace Pretpark.Kaart;
 public abstract class KaartItem : Tekenbaar{
     private Coordinaat _locatie;
     private Coordinaat Locatie {get { return _locatie;} set {
-        if(value.X >= kaart.Breedte && value.Y >= kaart.Hoogte){
+        if(value.X <= kaart.Breedte && value.Y <= kaart.Hoogte){
             _locatie = value;
         }}}
     private Kaart kaart;
