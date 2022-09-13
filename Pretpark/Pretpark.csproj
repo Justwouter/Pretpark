@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Pretpark.Kaart\Pretpark.Kaart.csproj" />
-    <ProjectReference Include="..\Pretpark.Auth\Pretpark.Auth.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
