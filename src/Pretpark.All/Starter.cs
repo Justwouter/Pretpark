@@ -2,7 +2,7 @@ namespace Pretpark.Kaart;
 using Pretpark.Base;
 
 public class Starter{
-    public static void Main(String[] args){
+    public static void main(String[] args){
         //Given example start method
         Kaart k = new Kaart(30, 30);
         Pad p1 = new Pad();

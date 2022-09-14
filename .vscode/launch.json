@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/Pretpark.Base/bin/Debug/net6.0/Pretpark.Base.dll",
+            "program": "${workspaceFolder}/src/Pretpark.All/bin/Debug/net6.0/Pretpark.All.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Pretpark.Base",
+            "cwd": "${workspaceFolder}/src/Pretpark.All",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
