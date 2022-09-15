@@ -1,6 +1,6 @@
 namespace Pretpark.Auth;
 
-public class GebruikerContext{
+public class GebruikerContext : IUserContext{
 
     private List<Gebruiker> currentUsers = new List<Gebruiker>();
     public int AantalGebruikers(){
@@ -14,5 +14,7 @@ public class GebruikerContext{
     public void NieuweGebruiker(string Wachtwoord, string Email){
         currentUsers.Add(new Gebruiker(Email, Wachtwoord));
     }
+
+    public void ClearAllData(){}
 
 }

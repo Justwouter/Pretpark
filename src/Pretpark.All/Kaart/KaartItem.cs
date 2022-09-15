@@ -11,7 +11,7 @@ public abstract class KaartItem : Tekenbaar{
     public KaartItem(Kaart kaart, Coordinaat _locatie){
         this.kaart = kaart;
         this.Locatie = _locatie;
-        kaart.VoegItemToe(this);
+        //kaart.VoegItemToe(this);
     }
     
     public void TekenConsole(ConsoleTekener t){

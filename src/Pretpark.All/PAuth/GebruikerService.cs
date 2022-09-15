@@ -1,10 +1,9 @@
 namespace Pretpark.Auth;
 
 public class GebruikerService{
-    public static GebruikerContext Context = new GebruikerContext();
-    public static EmailService emailService = new EmailService();
+    public static IUserContext Context = new GebruikerContext();
+    public static IEmail emailService = new EmailService();
     public Gebruiker Registreer(string email, string Wachtwoord){
-        //Gebruiker newUser = new Gebruiker(email,Wachtwoord);
         Context.NieuweGebruiker(Wachtwoord,email);
         Gebruiker newUser = Context.GetGebruiker(Context.AantalGebruikers()-1);
         Verifieer(email, newUser.getToken());

@@ -6,7 +6,7 @@ public class VerificatieToken{
 
     public VerificatieToken(String Token){
         this.Token = Token;
-        this.VerloopDatum = DateTime.Now;
+        this.VerloopDatum = DateTime.Today.AddDays(3);
     }
 
 }

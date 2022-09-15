@@ -13,11 +13,10 @@ public class Gebruiker{
         String RandomToken = new Random().Next().ToString();
         this.verificatie = new VerificatieToken(RandomToken);
         new EmailService().Email("Please verify your account with this token: "+ RandomToken, email);
-        
     }
 
     public string getToken(){
-        if(verificatie == null){
+        if(verificatie == null || verificatie.VerloopDatum < DateTime.Now){
             return "";
         }
         return verificatie.Token;
