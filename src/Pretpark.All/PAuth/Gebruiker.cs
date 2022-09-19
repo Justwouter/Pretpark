@@ -1,6 +1,6 @@
 namespace Pretpark.Auth;
 
-public class Gebruiker{
+public class Gebruiker : IUser{
     public VerificatieToken? verificatie;
 
     public bool isVerified = false;
@@ -10,9 +10,7 @@ public class Gebruiker{
     public Gebruiker(String email, String Wachtwoord){
         this.Email = email;
         this.Wachtwoord = Wachtwoord;
-        String RandomToken = new Random().Next().ToString();
-        this.verificatie = new VerificatieToken(RandomToken);
-        new EmailService().Email("Please verify your account with this token: "+ RandomToken, email);
+        this.generateNewToken();
     }
 
     public string getToken(){
@@ -24,5 +22,11 @@ public class Gebruiker{
 
     public bool Geverifieerd(){
         return isVerified;
+    }
+
+    public void generateNewToken(){
+        String RandomToken = new Random().Next().ToString();
+        this.verificatie = new VerificatieToken(RandomToken);
+        GebruikerService.emailService.Email("Please verify your account with this token: "+ RandomToken, this.Email);
     }
 }

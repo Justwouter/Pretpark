@@ -6,7 +6,7 @@ public class GebruikerService{
     public Gebruiker Registreer(string email, string Wachtwoord){
         Context.NieuweGebruiker(Wachtwoord,email);
         Gebruiker newUser = Context.GetGebruiker(Context.AantalGebruikers()-1);
-        Verifieer(email, newUser.getToken());
+        //Verifieer(email, newUser.getToken());
         return newUser;   
     }
 
@@ -31,6 +31,7 @@ public class GebruikerService{
                 return true;
             }
         }
+        AuthStart.WriteDubug("Couldn't verify " +email+" with token: "+Token);
         return false;
     }
 

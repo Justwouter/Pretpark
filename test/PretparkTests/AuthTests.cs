@@ -2,7 +2,7 @@ namespace PretparkTests;
 using Pretpark.Auth;
 
 public class AuthTest{
-    public static IUserContext context = new MockGebruikersContext();
+    public static MockGebruikersContext context = new MockGebruikersContext();
     public static IEmail email = new MockEmailService();
 
 
@@ -14,14 +14,56 @@ public class AuthTest{
         String Email = "Gary@hello";
 
         //Act
-
+        int currentUserAmt = context.AantalGebruikers();
+        context.NieuweGebruiker(Wachtwoord,Email);
+        int newUserAmt = context.AantalGebruikers();
         //Assert
+        Assert.Equal(1,newUserAmt);
+    }
+
+    [Fact]
+    public void AssertRegisterRefusesNewUserIfEmailInvalid(){
+        //Arrange
+        context.ClearAllData();
+        String Wachtwoord = "1234";
+        String Email = "Gary.hello";
+
+        //Act
+        int currentUserAmt = context.AantalGebruikers();
+        context.NieuweGebruiker(Email,Wachtwoord);
+        int newUserAmt = context.AantalGebruikers();
+        //Assert
+        Assert.Equal(currentUserAmt,newUserAmt);
     }
 
 
     [Fact]
-    public void AssertTokenExpiration(){
+    public void AssertTokenExpirationForVerification(){
+        //Arrange
+        context.ClearAllData();
+        GebruikerService GService = new GebruikerService();
+        GebruikerService.Context = context;
+        GebruikerService.emailService = email;
+
+        string token = "12345";
+        String Wachtwoord = "1234";
+        String Email = "Gary@hello";
+
+        VerificatieToken myTestToken= new VerificatieToken(token);
+
+        context.NieuweGebruiker(Wachtwoord, Email);
+        Gebruiker myTestUser = context.GetGebruiker(context.AantalGebruikers()-1);
+
+        DateTime TestTimeFiveSeconds = DateTime.Now;
+        TestTimeFiveSeconds.AddSeconds(3);
         
+        //Act
+        myTestToken.VerloopDatum = TestTimeFiveSeconds;
+        myTestUser.verificatie = myTestToken;
+
+        //Assert
+        Thread.Sleep(3000);
+        Assert.False(GService.Verifieer(Email, token));
     }
 
     //arrange 

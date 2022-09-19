@@ -8,7 +8,6 @@ public class MockEmailService : IEmail{
         this.Message = text;
         this.Adress = naarAdres;
         if(naarAdres.Contains("@")){
-            Console.WriteLine("To "+naarAdres + ": " + text);
             return true;
         }
         return false;

@@ -12,7 +12,9 @@ public class GebruikerContext : IUserContext{
     }
 
     public void NieuweGebruiker(string Wachtwoord, string Email){
-        currentUsers.Add(new Gebruiker(Email, Wachtwoord));
+        if(Email.Contains("@")){
+            currentUsers.Add(new Gebruiker(Email, Wachtwoord));
+        }
     }
 
     public void ClearAllData(){}

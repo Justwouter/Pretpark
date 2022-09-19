@@ -7,7 +7,7 @@ public interface IUserContext{
 
     public Gebruiker GetGebruiker(int i);
 
-    public void NieuweGebruiker(string Wachtwoord, string Email);
+    public void NieuweGebruiker(string Wachtwoord, string Email){}
 
     public void ClearAllData();
 

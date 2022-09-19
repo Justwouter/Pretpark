@@ -13,9 +13,10 @@ public class MockGebruikersContext : IUserContext{
         return allUsers[i];
     }
 
-    public void NieuweGebruiker(string Wachtwoord, string Email)
-    {
-        allUsers.Add(new Gebruiker(Email, Wachtwoord));
+    public void NieuweGebruiker(string Wachtwoord, string Email){
+        if(Email.Contains("@")){
+            allUsers.Add(new Gebruiker(Email, Wachtwoord));
+        }
     }
 
     public void ClearAllData(){
