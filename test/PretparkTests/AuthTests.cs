@@ -77,7 +77,6 @@ public class AuthTest{
         Gebruiker myTestUser = context.GetGebruiker(context.AantalGebruikers()-1);
 
         DateTime TestTimeFiveSeconds = DateTime.Now;
-        TestTimeFiveSeconds.AddSeconds(3);
         
         //Act
         myTestToken.VerloopDatum = TestTimeFiveSeconds;
