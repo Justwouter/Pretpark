@@ -39,6 +39,44 @@ public class AuthTestWithMOQ{
 
     }
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void MOQAssertLoginIsPossible(bool userCanLogin){
+        //Arrange
+        GebruikerService Gservice = new GebruikerService();
+        Gservice.Context = UserContextMoq.Object;
+        Gservice.emailService = EmailMoq.Object;
+
+        List<Gebruiker> userList = new List<Gebruiker>();
+
+        
+
+        int userAmt = 5;
+        String Email = "Gary@Brannan";
+        String Wachtwoord = "TomStinks";
+
+        for(int i=0;i<=userAmt;i++){
+            userList.Add(VerifyUsers(new Gebruiker(Email,Wachtwoord+i.ToString())));
+        }
+        if(userCanLogin){
+            userList.Add(VerifyUsers(new Gebruiker(Email, Wachtwoord)));
+        }
+
+        UserContextMoq.Setup(userAmt => userAmt.AantalGebruikers()).Returns(userList.Count()); //<- bruh lambdas don't update when a value changes?!
+        UserContextMoq.Setup(Context => Context.GetGebruiker(It.IsAny<int>())).Returns<int>(x => userList[x]);
+
+        bool result = Gservice.Login(Email,Wachtwoord);
+        
+        //Assert
+        Assert.Equal(userCanLogin,result);
+    }
+
+    public Gebruiker VerifyUsers(Gebruiker user){
+        user.isVerified = true;
+        return user;
+    }
+
 
 
 
