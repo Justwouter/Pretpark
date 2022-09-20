@@ -7,8 +7,6 @@ public class MockGebruikersContext : IUserContext{
         return allUsers.Count;
     }
         
-    
-
     public Gebruiker GetGebruiker(int i){
         return allUsers[i];
     }

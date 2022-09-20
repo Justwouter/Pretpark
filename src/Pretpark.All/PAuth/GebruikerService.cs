@@ -1,8 +1,8 @@
 namespace Pretpark.Auth;
 
-public class GebruikerService{
-    public static IUserContext Context = new GebruikerContext();
-    public static IEmail emailService = new EmailService();
+public class GebruikerService : IUserService{
+    public IUserContext Context = new GebruikerContext();
+    public IEmail emailService = new EmailService();
     public Gebruiker Registreer(string email, string Wachtwoord){
         Context.NieuweGebruiker(Wachtwoord,email);
         Gebruiker newUser = Context.GetGebruiker(Context.AantalGebruikers()-1);
@@ -25,7 +25,7 @@ public class GebruikerService{
         for(int i = 0; i < Context.AantalGebruikers();i++){
             Gebruiker target = Context.GetGebruiker(i);
             if(target.Email == email && Token == target.getToken()){
-                target.verificatie = null;
+                target.verificatie.VerloopDatum = DateTime.Now;
                 target.isVerified = true;
                 AuthStart.WriteDubug("Email: "+email+" with token: "+Token+" is verified");
                 return true;

@@ -8,5 +8,9 @@ public class VerificatieToken{
         this.Token = Token;
         this.VerloopDatum = DateTime.Today.AddDays(3);
     }
+    public VerificatieToken(){
+        this.Token = "";
+        this.VerloopDatum = DateTime.Now;
+    }
 
 }

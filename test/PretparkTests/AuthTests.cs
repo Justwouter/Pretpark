@@ -42,8 +42,8 @@ public class AuthTest{
         //Arrange
         context.ClearAllData();
         GebruikerService GService = new GebruikerService();
-        GebruikerService.Context = context;
-        GebruikerService.emailService = email;
+        GService.Context = context;
+        GService.emailService = email;
 
         string token = "12345";
         String Wachtwoord = "1234";
