@@ -24,22 +24,21 @@ public class AuthTestWithMOQ{
 
         Gebruiker myTestUser = Gservice.Registreer(Email,Wachtwoord);
         myTestUser.EmailService = EmailMoq.Object;
-        DateTime myTestDate;
 
         //Act
         VerificatieToken myTestToken = myTestUser.generateNewToken();
         myTestToken.Token = "12345";
 
         if(!valid){
-            myTestDate = DateTime.Now;
-            myTestToken.VerloopDatum = myTestDate;
+            myTestToken.VerloopDatum = DateTime.Now;
         }
-        bool result = Gservice.Verifieer(Email, "12345");
+        bool result = Gservice.Verifieer(Email, myTestToken.Token);
 
         //Assert
         Assert.Equal(valid,result);
 
     }
+
 
 
 
