@@ -10,7 +10,7 @@ public class AuthTestWithMOQ{
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public void MOQAssertTokenExpirationForVerification(bool expired){
+    public void MOQAssertTokenExpirationForVerification(bool valid){
         //Arrange
         GebruikerService Gservice = new GebruikerService();
         Gservice.Context = UserContextMoq.Object;
@@ -27,20 +27,17 @@ public class AuthTestWithMOQ{
         DateTime myTestDate;
 
         //Act
-        if(expired){
-            myTestDate = DateTime.Now.AddDays(3);
-        }
-        else{
-            myTestDate = DateTime.Now;
-        }
         VerificatieToken myTestToken = myTestUser.generateNewToken();
-        myTestToken.VerloopDatum = myTestDate;
         myTestToken.Token = "12345";
 
-        bool result = !Gservice.Verifieer(Email, "12345");
+        if(!valid){
+            myTestDate = DateTime.Now;
+            myTestToken.VerloopDatum = myTestDate;
+        }
+        bool result = Gservice.Verifieer(Email, "12345");
 
         //Assert
-        Assert.Equal(expired,result);
+        Assert.Equal(valid,result);
 
     }
 
