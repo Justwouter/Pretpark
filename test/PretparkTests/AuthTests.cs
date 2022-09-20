@@ -30,12 +30,34 @@ public class AuthTest{
 
         //Act
         int currentUserAmt = context.AantalGebruikers();
-        context.NieuweGebruiker(Email,Wachtwoord);
+        context.NieuweGebruiker(Wachtwoord,Email);
         int newUserAmt = context.AantalGebruikers();
         //Assert
         Assert.Equal(currentUserAmt,newUserAmt);
     }
 
+
+    //Shorter version of the above tests
+    [Theory]
+    [InlineData(1)]
+    [InlineData(0)]
+    public void AssertRegisterCombinedNewUserValidity(int userAmt){
+        //Arrange
+        context.ClearAllData();
+
+        String Wachtwoord = "1234";
+        String Email = "Gary.hello";
+        if(userAmt > 0){
+            Email = "Gary@hello";
+        }
+
+        //Act
+        context.NieuweGebruiker(Wachtwoord,Email);
+        int newUserAmt = context.AantalGebruikers();
+        //Assert
+        Assert.Equal(userAmt,newUserAmt);
+
+    }
 
     [Fact]
     public void AssertTokenExpirationForVerification(){
