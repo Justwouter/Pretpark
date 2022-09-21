@@ -1,5 +1,5 @@
 namespace Pretpark.Auth;
-
+using System.Diagnostics;
 public class AuthStart{
     public static void Start(){
         Console.WriteLine("Starting auth module");
@@ -61,8 +61,11 @@ public class AuthStart{
 
     public static void WriteDubug(String text){
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(text);
+        //Console.WriteLine(text);
         Console.ResetColor();
+        System.Diagnostics.Debug.Print(text);
+        
+        
     }
 
 
