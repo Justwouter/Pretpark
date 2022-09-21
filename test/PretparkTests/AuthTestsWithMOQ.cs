@@ -16,7 +16,6 @@ public class AuthTestWithMOQ{
         Gservice.Context = UserContextMoq.Object;
         Gservice.emailService = EmailMoq.Object;
         
-
         String Wachtwoord = "TomStinks";
         String Email = "Gary@Brannan";
         UserContextMoq.Setup(user => user.GetGebruiker(0)).Returns(new Gebruiker(Email,Wachtwoord));
@@ -50,8 +49,6 @@ public class AuthTestWithMOQ{
 
         List<Gebruiker> userList = new List<Gebruiker>();
 
-        
-
         int userAmt = 5;
         String Email = "Gary@Brannan";
         String Wachtwoord = "TomStinks";
@@ -76,8 +73,4 @@ public class AuthTestWithMOQ{
         user.isVerified = true;
         return user;
     }
-
-
-
-
 }
