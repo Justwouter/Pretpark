@@ -18,7 +18,7 @@ public class AuthTest{
         context.NieuweGebruiker(Wachtwoord,Email);
         int newUserAmt = context.AantalGebruikers();
         //Assert
-        Assert.Equal(1,newUserAmt);
+        Assert.Equal(currentUserAmt+1,newUserAmt);
     }
 
     [Fact]
