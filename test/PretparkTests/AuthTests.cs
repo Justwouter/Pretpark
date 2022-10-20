@@ -67,7 +67,7 @@ public class AuthTest{
         GService.Context = context;
         GService.emailService = email;
 
-        string token = "12345";
+        String token = "12345";
         String Wachtwoord = "1234";
         String Email = "Gary@hello";
 
